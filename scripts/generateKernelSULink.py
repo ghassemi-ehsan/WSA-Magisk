@@ -35,7 +35,9 @@ kernelVersion = sys.argv[4]
 file_name = sys.argv[5]
 abi_map = {"x64": "x86_64", "arm64": "arm64"}
 print(f"Generating KernelSU download link: arch={abi_map[arch]}, kernel version={kernelVersion}", flush=True)
-res = requests.get(f"https://api.github.com/repos/tiann/KernelSU/releases/latest")
+res = requests.get(
+    "https://api.github.com/repos/tiann/KernelSU/releases/latest"
+)
 json_data = json.loads(res.content)
 headers = res.headers
 x_ratelimit_remaining = headers["x-ratelimit-remaining"]
